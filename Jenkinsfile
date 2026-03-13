@@ -7,8 +7,8 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/ArsalaanS/comp367-maven-app.git'
 
                 // Compile and run Maven project
-                bat 'mvn compile'
-                bat 'mvn exec:java -Dexec.mainClass="com.centennial.App"'
+                sh 'mvn compile'
+                sh 'mvn exec:java -Dexec.mainClass="com.centennial.App"'
             }
         }
     }
