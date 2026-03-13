@@ -1,18 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Build & Run') {
             steps {
-                git 'https://github.com/ArsalaanS/comp367-maven-app.git'
-            }
-        }
-        stage('Build') {
-            steps {
+                // Checkout the main branch only once
+                git branch: 'main', url: 'https://github.com/ArsalaanS/comp367-maven-app.git'
+
+                // Compile and run Maven project
                 bat 'mvn compile'
-            }
-        }
-        stage('Run') {
-            steps {
                 bat 'mvn exec:java -Dexec.mainClass="com.centennial.App"'
             }
         }
